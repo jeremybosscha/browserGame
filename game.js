@@ -1,8 +1,10 @@
+//http://www.lostdecadegames.com/how-to-make-a-simple-html5-canvas-game/
+
 // 1.Create the canvas
 var canvas = document.createElement("canvas");
 var ctx = canvas.getContext("2d");
-canvas.width = 512;
-canvas.height = 480;
+canvas.width = 1800;
+canvas.height = 1280;
 document.body.appendChild(canvas);
 var context = canvas.getContext('2d');
 
