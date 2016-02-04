@@ -1,4 +1,4 @@
-// Create the canvas
+// 1.Create the canvas
 var canvas = document.createElement("canvas");
 var ctx = canvas.getContext("2d");
 canvas.width = 512;
@@ -7,7 +7,7 @@ document.body.appendChild(canvas);
 
 
 
-// Background image
+// 2.Background image
 var bgReady = false;
 var bgImage = new Image();
 bgImage.onload = function () {
@@ -16,7 +16,25 @@ bgImage.onload = function () {
 bgImage.src = "images/background.png";
 
 
-// Game objects
+// Hero image
+var heroReady = false;
+var heroImage = new Image();
+heroImage.onload = function () {
+heroReady = true;
+};
+heroImage.src = "images/hero.png";
+
+
+// Monster image
+var monsterReady = false;
+var monsterImage = new Image();
+monsterImage.onload = function () {
+monsterReady = true;
+};
+monsterImage.src = "images/monster.png";
+
+
+// 3.Game objects
 var hero = {
 	speed: 256, // movement in pixels per second
 	x: 0,
@@ -29,7 +47,7 @@ var monster = {
 var monstersCaught = 0;
 
 
-// Handle keyboard controls
+// 4.Handle keyboard controls
 var keysDown = {};
 
 addEventListener("keydown", function (e) {
@@ -42,7 +60,7 @@ addEventListener("keyup", function (e) {
 
 
 
-// Reset the game when the player catches a monster
+// 5.Reset the game when the player catches a monster
 var reset = function () {
 	hero.x = canvas.width / 2;
 	hero.y = canvas.height / 2;
@@ -54,7 +72,7 @@ var reset = function () {
 
 
 
-// Update game objects
+// 6.Update game objects
 var update = function (modifier) {
 	if (38 in keysDown) { // Player holding up
 		hero.y -= hero.speed * modifier;
@@ -69,9 +87,7 @@ var update = function (modifier) {
 		hero.x += hero.speed * modifier;
 	}
 
-
-
-	// Are they touching?
+	// 6.1 Are they touching?
 	if (
 		hero.x <= (monster.x + 32)
 		&& monster.x <= (hero.x + 32)
@@ -85,7 +101,7 @@ var update = function (modifier) {
 
 
 
-// Draw everything
+// 7.Draw everything
 var render = function () {
 	if (bgReady) {
 		ctx.drawImage(bgImage, 0, 0);
@@ -108,8 +124,7 @@ var render = function () {
 };
 
 
-
-// The main game loop
+// 8.The main game loop
 var main = function () {
 	var now = Date.now();
 	var delta = now - then;
@@ -129,7 +144,7 @@ var w = window;
 requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || w.mozRequestAnimationFrame;
 
 
-// Let's play this game!
+// 10.Let's play this game!
 var then = Date.now();
 reset();
 main();
