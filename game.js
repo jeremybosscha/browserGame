@@ -4,6 +4,7 @@ var ctx = canvas.getContext("2d");
 canvas.width = 512;
 canvas.height = 480;
 document.body.appendChild(canvas);
+var context = canvas.getContext('2d');
 
 
 
@@ -97,6 +98,7 @@ var update = function (modifier) {
 		++monstersCaught;
 		reset();
 	}
+	context.clearRect(0,0,canvas.width,canvas.height);
 };
 
 
@@ -133,7 +135,6 @@ var main = function () {
 	render();
 
 	then = now;
-
 	// Request to do this again ASAP
 	requestAnimationFrame(main);
 };
