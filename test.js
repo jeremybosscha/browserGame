@@ -1,1 +1,3 @@
-alert("Stoer");
+window.onload = function() {
+  alert();
+};
